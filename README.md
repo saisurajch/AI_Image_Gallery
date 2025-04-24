@@ -133,7 +133,7 @@ This project is licensed under the MIT License. See the `LICENSE` file for detai
 The architecture of the CSC Project is designed to leverage AWS services for scalability, security, and performance.
 
 <div align="center">
-  <img src="path/to/architecture-diagram.png" alt="Project Architecture" />
+  <img src="CSCProject_Architecture.drawio.png" alt="Project Architecture" />
 </div>
 
 ### Key Components
