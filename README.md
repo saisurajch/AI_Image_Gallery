@@ -130,9 +130,11 @@ This project is licensed under the MIT License. See the `LICENSE` file for detai
 
 ## Project Architecture
 
-The architecture of the CSC Project is designed to leverage AWS services for scalability, security, and performance. Below is the high-level architecture diagram:
+The architecture of the CSC Project is designed to leverage AWS services for scalability, security, and performance.
 
-![Project Architecture](path/to/architecture-diagram.png)
+<div align="center">
+  <img src="path/to/architecture-diagram.png" alt="Project Architecture" />
+</div>
 
 ### Key Components
 
