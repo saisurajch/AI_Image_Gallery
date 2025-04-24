@@ -127,3 +127,32 @@ Contributions are welcome! Please fork the repository and submit a pull request.
 ## License
 
 This project is licensed under the MIT License. See the `LICENSE` file for details.
+
+## Project Architecture
+
+The architecture of the CSC Project is designed to leverage AWS services for scalability, security, and performance. Below is the high-level architecture diagram:
+
+![Project Architecture](path/to/architecture-diagram.png)
+
+### Key Components
+
+1. **Frontend**:
+   - Built with Next.js and hosted on Amplify.
+   - Integrated with AWS Cognito for authentication.
+   - Uses Cloudflare for DNS, caching, and DDoS protection.
+
+2. **Backend**:
+   - Serverless architecture using AWS Lambda functions.
+   - API Gateway for routing requests.
+   - AWS Rekognition for image processing (label detection and text extraction).
+   - DynamoDB for data storage and DynamoDB Streams for event-driven processing.
+
+3. **Data Pipeline**:
+   - DynamoDB to OpenSearch pipeline for indexing and search capabilities.
+
+4. **Storage**:
+   - S3 bucket for image storage.
+
+5. **Security**:
+   - AWS Certificate Manager for SSL/TLS.
+   - Cloudflare for additional security layers.
