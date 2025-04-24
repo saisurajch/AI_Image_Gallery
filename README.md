@@ -1,37 +1,41 @@
 # CSC Project
 
-This repository contains the frontend and backend components of the CSC Project. The frontend is built using [Next.js](https://nextjs.org) and styled with [Tailwind CSS](https://tailwindcss.com). The backend consists of AWS Lambda functions for serverless operations and a pipeline configuration for data ingestion.
+<div align="center">
+  <img src="CSCProject_Architecture.drawio.png" alt="Project Architecture" />
+</div>
+
+This repository hosts the frontend and backend components of the CSC Project. The frontend is developed using [Next.js](https://nextjs.org) and styled with [Tailwind CSS](https://tailwindcss.com). The backend leverages AWS Lambda for serverless operations and includes a data ingestion pipeline configuration.
 
 ## Features
 
 ### Frontend
-- **Authentication**: Login, signup, and password recovery.
-- **Photo Management**: Upload, organize, and delete photos.
-- **Albums**: Create, edit, and delete albums.
-- **Favorites**: Mark photos as favorites for quick access.
-- **Trash**: Recover or permanently delete photos.
+- **User Authentication**: Supports login, signup, and password recovery.
+- **Photo Management**: Enables uploading, organizing, and deleting photos.
+- **Albums**: Allows creating, editing, and deleting albums.
+- **Favorites**: Lets users mark photos as favorites for quick access.
+- **Trash**: Provides options to recover or permanently delete photos.
 - **Responsive Design**: Optimized for both desktop and mobile devices.
 
 ### Backend
 - **AWS Lambda Functions**:
   - **Albums**:
-    - Create, update, delete, and fetch albums.
+    - Manage albums: create, update, delete, and fetch.
     - Add or remove images from albums.
   - **Images**:
-    - Upload, delete, recover, and manage favorites.
-    - Process images using AWS Rekognition for labels and text extraction.
+    - Handle image uploads, deletions, recovery, and favorites.
+    - Use AWS Rekognition for label detection and text extraction.
   - **Authentication**:
-    - User signup with AWS Cognito and DynamoDB integration.
-- **Pipeline Configuration**:
-  - DynamoDB to OpenSearch pipeline for event data ingestion.
+    - User signup integrated with AWS Cognito and DynamoDB.
+- **Data Pipeline**:
+  - Configures a DynamoDB to OpenSearch pipeline for event data ingestion.
 
 ## Getting Started
 
 ### Prerequisites
 
 - Node.js (v16 or later)
-- npm, yarn, or pnpm package manager
-- AWS CLI configured with appropriate permissions
+- A package manager like npm, yarn, or pnpm
+- AWS CLI configured with the necessary permissions
 
 ### Installation
 
@@ -56,7 +60,7 @@ Start the development server:
 npm run dev
 ```
 
-Open [http://localhost:3000](http://localhost:3000) in your browser to view the app.
+Visit [http://localhost:3000](http://localhost:3000) in your browser to view the application.
 
 ### Deploying the Backend
 
@@ -66,7 +70,7 @@ Open [http://localhost:3000](http://localhost:3000) in your browser to view the 
    aws lambda update-function-code --function-name <function-name> --zip-file fileb://function.zip
    ```
 
-2. Update the pipeline configuration in `pipeline-configuration.yaml` and deploy it.
+2. Update and deploy the pipeline configuration in `pipeline-configuration.yaml`.
 
 ## Folder Structure
 
@@ -115,14 +119,14 @@ AWS_COGNITO_CLIENT_SECRET=<your-client-secret>
 ## Deployment
 
 ### Frontend
-Deploy the frontend on [Vercel](https://vercel.com) or any other platform that supports Next.js.
+Deploy the frontend using [Vercel](https://vercel.com) or any other Next.js-compatible platform.
 
 ### Backend
 Deploy the Lambda functions and pipeline configuration using AWS CLI or a CI/CD pipeline.
 
 ## Contributing
 
-Contributions are welcome! Please fork the repository and submit a pull request.
+Contributions are welcome! Fork the repository and submit a pull request.
 
 ## License
 
@@ -130,11 +134,7 @@ This project is licensed under the MIT License. See the `LICENSE` file for detai
 
 ## Project Architecture
 
-The architecture of the CSC Project is designed to leverage AWS services for scalability, security, and performance.
-
-<div align="center">
-  <img src="CSCProject_Architecture.drawio.png" alt="Project Architecture" />
-</div>
+The CSC Project architecture leverages AWS services for scalability, security, and performance.
 
 ### Key Components
 
