@@ -1,9 +1,10 @@
-# CSC Project Frontend
+# CSC Project
 
-This is the frontend of the CSC Project, built using [Next.js](https://nextjs.org) and styled with [Tailwind CSS](https://tailwindcss.com). It provides a user-friendly interface for managing photos, albums, and other related features.
+This repository contains the frontend and backend components of the CSC Project. The frontend is built using [Next.js](https://nextjs.org) and styled with [Tailwind CSS](https://tailwindcss.com). The backend consists of AWS Lambda functions for serverless operations and a pipeline configuration for data ingestion.
 
 ## Features
 
+### Frontend
 - **Authentication**: Login, signup, and password recovery.
 - **Photo Management**: Upload, organize, and delete photos.
 - **Albums**: Create, edit, and delete albums.
@@ -11,109 +12,113 @@ This is the frontend of the CSC Project, built using [Next.js](https://nextjs.or
 - **Trash**: Recover or permanently delete photos.
 - **Responsive Design**: Optimized for both desktop and mobile devices.
 
+### Backend
+- **AWS Lambda Functions**:
+  - **Albums**:
+    - Create, update, delete, and fetch albums.
+    - Add or remove images from albums.
+  - **Images**:
+    - Upload, delete, recover, and manage favorites.
+    - Process images using AWS Rekognition for labels and text extraction.
+  - **Authentication**:
+    - User signup with AWS Cognito and DynamoDB integration.
+- **Pipeline Configuration**:
+  - DynamoDB to OpenSearch pipeline for event data ingestion.
+
 ## Getting Started
 
 ### Prerequisites
 
 - Node.js (v16 or later)
 - npm, yarn, or pnpm package manager
+- AWS CLI configured with appropriate permissions
 
 ### Installation
 
 1. Clone the repository:
    ```bash
-   git clone https://github.com/your-repo/csc-project-frontend.git
-   cd csc-project-frontend
+   git clone https://github.com/your-repo/csc-project.git
+   cd csc-project
    ```
 
-2. Install dependencies:
+2. Navigate to the frontend directory and install dependencies:
    ```bash
+   cd frontend
    npm install
-   # or
-   yarn install
-   # or
-   pnpm install
    ```
 
-### Running the Development Server
+3. Deploy the backend Lambda functions using AWS CLI or your preferred deployment tool.
+
+### Running the Frontend Development Server
 
 Start the development server:
 ```bash
 npm run dev
-# or
-yarn dev
-# or
-pnpm dev
 ```
 
 Open [http://localhost:3000](http://localhost:3000) in your browser to view the app.
 
-### Building for Production
+### Deploying the Backend
 
-To build the app for production:
-```bash
-npm run build
+1. Package and deploy the Lambda functions:
+   ```bash
+   zip -r function.zip .
+   aws lambda update-function-code --function-name <function-name> --zip-file fileb://function.zip
+   ```
+
+2. Update the pipeline configuration in `pipeline-configuration.yaml` and deploy it.
+
+## Folder Structure
+
 ```
-
-Start the production server:
-```bash
-npm start
-```
-
-### Linting and Formatting
-
-Run ESLint to check for code issues:
-```bash
-npm run lint
-```
-
-Format code with Prettier:
-```bash
-npm run format
+CSC-Project/
+├── frontend/               # Frontend application
+│   ├── src/                # Source code
+│   ├── public/             # Static assets
+│   ├── next.config.js      # Next.js configuration
+│   ├── tailwind.config.js  # Tailwind CSS configuration
+│   └── README.md           # Frontend documentation
+├── lambda_sources/         # AWS Lambda functions
+│   ├── CSC-Project-Albums-Create.py
+│   ├── CSC-Project-Albums-Delete.py
+│   ├── CSC-Project-Albums-GetAlbums.py
+│   ├── CSC-Project-Albums-Update.py
+│   ├── CSC-Project-Images-Upload.py
+│   ├── CSC-Project-Images-Delete.py
+│   ├── CSC-Project-Images-Recover.py
+│   ├── CSC-Project-Images-GetTrash.py
+│   ├── CSC-Project-Images-GetFavourites.py
+│   ├── CSC-Project-Auth-Signup.py
+│   └── CSC-Project-Image-Processor.py
+├── pipeline-configuration.yaml  # DynamoDB to OpenSearch pipeline configuration
+└── README.md               # Project documentation
 ```
 
 ## Environment Variables
 
-Create a `.env.local` file in the root directory and add the following variables:
-
+### Frontend
+Create a `.env.local` file in the `frontend` directory:
 ```env
 NEXT_PUBLIC_API_URL=https://api.example.com
 NEXT_PUBLIC_S3_BUCKET_URL=https://your-s3-bucket-url
 ```
 
-## Folder Structure
-
-```
-frontend/
-├── src/
-│   ├── app/                # Next.js app directory
-│   ├── components/         # Reusable UI components
-│   ├── hooks/              # Custom React hooks
-│   ├── styles/             # Global and component-specific styles
-│   ├── utils/              # Utility functions
-│   └── middleware.ts       # Middleware for authentication
-├── public/                 # Static assets
-├── next.config.js          # Next.js configuration
-├── tailwind.config.js      # Tailwind CSS configuration
-├── postcss.config.js       # PostCSS configuration
-└── README.md               # Project documentation
+### Backend
+Set the following environment variables for Lambda functions:
+```env
+AWS_COGNITO_USER_POOL_ID=<your-user-pool-id>
+AWS_COGNITO_CLIENT_ID=<your-client-id>
+AWS_COGNITO_REGION=<your-region>
+AWS_COGNITO_CLIENT_SECRET=<your-client-secret>
 ```
 
 ## Deployment
 
-The app can be deployed on [Vercel](https://vercel.com) or any other platform that supports Next.js.
+### Frontend
+Deploy the frontend on [Vercel](https://vercel.com) or any other platform that supports Next.js.
 
-### Deploy on Vercel
-
-1. Install the Vercel CLI:
-   ```bash
-   npm install -g vercel
-   ```
-
-2. Deploy the app:
-   ```bash
-   vercel
-   ```
+### Backend
+Deploy the Lambda functions and pipeline configuration using AWS CLI or a CI/CD pipeline.
 
 ## Contributing
 
