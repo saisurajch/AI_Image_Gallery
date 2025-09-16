@@ -4,7 +4,7 @@ Project
   <img src="CSCProject_Architecture.drawio.png" alt="Project Architecture" />
 </div>
 
-This repository hosts the frontend and backend components of the CSC Project. The frontend is developed using [Next.js](https://nextjs.org) and styled with [Tailwind CSS](https://tailwindcss.com). The backend leverages AWS Lambda for serverless operations and includes a data ingestion pipeline configuration.
+This repository hosts the frontend and backend components of the Project. The frontend is developed using [Next.js](https://nextjs.org) and styled with [Tailwind CSS](https://tailwindcss.com). The backend leverages AWS Lambda for serverless operations and includes a data ingestion pipeline configuration.
 
 ## Features
 
