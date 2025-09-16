@@ -1,4 +1,4 @@
-# CSC Project
+Project
 
 <div align="center">
   <img src="CSCProject_Architecture.drawio.png" alt="Project Architecture" />
